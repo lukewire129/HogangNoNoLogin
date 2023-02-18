@@ -3,8 +3,11 @@
 
 
 
+https://user-images.githubusercontent.com/54387261/219876616-77956160-e3cc-4ecd-9814-18e0f6e6c6f7.mp4
 
-Uploading GOMCAM 20230219_0116200240.mp4…
+
+
+
 
 
 - 아직 진행 중..........진행중........... 진행중.....
