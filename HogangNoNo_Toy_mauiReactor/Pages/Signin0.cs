@@ -47,7 +47,7 @@ public class Signin0 : Component<Signin0State>
                                 }
                                 .Padding(10),
 
-                                new BottomButton("인증번호받기")
+                                new BottomStateButton("인증번호받기")
                                 .IsEnabled(State.isAuthNumber)
                                 .OnTap(Next)
                         }

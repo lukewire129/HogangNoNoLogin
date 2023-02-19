@@ -7,16 +7,16 @@ public class BottomButtonState
         public Color backGround { get; set; }
         public Color textColor { get; set; }
 }
-public class BottomButton : Component<BottomButtonState>
+public class BottomStateButton : Component<BottomButtonState>
 {
         private string _text;
         private bool _state;
         private Action NextPage;
-        public BottomButton(string text)
+        public BottomStateButton(string text)
         {
                 this._text = text;
         }
-        public BottomButton OnTap(Action action)
+        public BottomStateButton OnTap(Action action)
         {
                 NextPage = action;
                 return this;
@@ -41,7 +41,7 @@ public class BottomButton : Component<BottomButtonState>
         }
 
         
-        public BottomButton IsEnabled(bool state)
+        public BottomStateButton IsEnabled(bool state)
         {
                 _state = state;
                 return this;

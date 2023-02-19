@@ -61,7 +61,7 @@ public class PhoneAndEmailSignUp : Component<PhoneAndEmailSignUpState>
                                         }
                                 }.Padding(10),
 
-                                new BottomButton("로그인")
+                                new BottomStateButton("로그인")
                                 .IsEnabled(State.isNextButton)
                                 .OnTap(Next)
                         }
