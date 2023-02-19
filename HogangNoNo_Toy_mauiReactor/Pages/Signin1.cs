@@ -11,33 +11,63 @@
                                         new VStack(5)
                                         {
                                                 new Entry()
-                                                .Placeholder("010"),
+                                                .Placeholder("비밀번호(10자리 이상)"),
 
                                                 new Entry()
-                                                .Placeholder("인증번호"),
+                                                .Placeholder("비밀번호"),
 
-                                                new Label("휴대전화번호 인증이 필요합니다. 휴대전화번호는 외부에 노출하지 않습니다.")
-                                                .TextColor(Color.FromArgb("#DDCCCCCC"))
-                                                .Padding(10,0)
+                                                new Grid()
+                                                {
+                                                        new HStack(5)
+                                                        {
+                                                                new Entry()
+                                                                .Placeholder("****")
+                                                                .WidthRequest(90),
+
+                                                                new Label("년생")
+                                                                .FontAttributes(Microsoft.Maui.Controls.FontAttributes.Bold)
+                                                                .FontSize(15)
+                                                                .VCenter(),
+
+                                                                new Label("(선택)")                                                                
+                                                                .VCenter()
+                                                                .FontSize(13)
+                                                                .TextColor(Color.FromRgba("#7D83C8"))
+                                                        }
+                                                        .HStart(),
+
+                                                        new HStack(-1)
+                                                        {
+                                                                ToggleButton("남자"),
+                                                                ToggleButton("여자"),
+                                                        }
+                                                        .HEnd()
+                                                }
                                         }
                                         .Padding(10),
-
-                                         new Label("2:57")
-                                        .TextColor(Colors.White)
-                                        .FontAttributes(Microsoft.Maui.Controls.FontAttributes.Bold)
-                                        .BackgroundColor(Color.FromArgb("#584DE3"))
-                                        .HeightRequest(70)
-                                        .VerticalTextAlignment(TextAlignment.Center)
-                                        .HorizontalTextAlignment(TextAlignment.Center)
-                                        .VEnd()
                                 }
                         }
-                        .Title("일반 회원 가입");
+                        .Title("회원 정보 입력");
+                }
+
+                private Button ToggleButton(string text)
+                {
+                        return new Button(text)
+                                .BorderWidth(1)
+                                .BorderColor(Color.FromRgba("#cccccc"))
+                                .CornerRadius(0)
+                                .BackgroundColor(Colors.Transparent)
+                                .WidthRequest(70)
+                                .HeightRequest(37)
+                                .TextColor(Color.FromRgba("#cccccc"))
+                                .FontSize(14)
+                                .FontAttributes(Microsoft.Maui.Controls.FontAttributes.Bold)
+                                ;
                 }
 
                 private async void Next()
                 {
-                        await Navigation.PushAsync<Signin2>();
+                        await Navigation.PopToRootAsync();
                 }
         }
 }

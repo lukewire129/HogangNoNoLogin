@@ -72,7 +72,7 @@ namespace HogangNoNo_Toy_mauiReactor.Pages.Components
                                                         .BackgroundColor(Color.FromRgba("#584DE3"))
                                                         .OnClicked(PersonalSignUp),
 
-                                                       StartButton("페이스북으로 시작하기")
+                                                        StartButton("페이스북으로 시작하기")
                                                         .TextColor(Colors.White)
                                                         .BackgroundColor(Color.FromRgba("#1878F2"))
                                                         .BorderColor(Color.FromRgba("#cccccc")),
