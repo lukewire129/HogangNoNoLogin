@@ -1,12 +1,10 @@
-﻿namespace HogangNoNo_Toy_mauiReactor.Pages
+﻿namespace HogangNoNo_Toy_mauiReactor.Pages;
+internal class MainPage : Component
 {
-        internal class MainPage : Component
+        public override VisualNode Render()
         {
-                public override VisualNode Render()
+                return new Login
                 {
-                        return new Login
-                        {
-                        };
-                }
+                };
         }
 }
