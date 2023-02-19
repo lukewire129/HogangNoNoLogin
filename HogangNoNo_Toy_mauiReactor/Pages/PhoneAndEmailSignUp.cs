@@ -1,8 +1,4 @@
-﻿
-using MauiReactor;
-using System.Threading.Tasks;
-
-namespace HogangNoNo_Toy_mauiReactor.Pages
+﻿namespace HogangNoNo_Toy_mauiReactor.Pages
 {
         public class PhoneAndEmailSignUp : Component
         {

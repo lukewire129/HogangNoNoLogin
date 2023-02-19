@@ -46,23 +46,15 @@ namespace HogangNoNo_Toy_mauiReactor.Pages
 
                                                 new VStack(5)
                                                 {
-                                                        new Button("카카오톡 로그인하기")
-                                                        .FontAttributes(Microsoft.Maui.Controls.FontAttributes.Bold)
+                                                        LoginButton("카카오톡 로그인하기")
                                                         .TextColor(Color.FromRgba("#3C1D1E"))
-                                                        .BackgroundColor(Color.FromRgba("#F9E001"))
-                                                        .CornerRadius(5)
-                                                        .HeightRequest(40)
-                                                        .FontSize(12),
+                                                        .BackgroundColor(Color.FromRgba("#F9E001")),
 
-                                                        new Button("다른 방법으로 로그인하기")
-                                                        .FontAttributes(Microsoft.Maui.Controls.FontAttributes.Bold)
+                                                        LoginButton("다른 방법으로 로그인하기")
                                                         .TextColor(Colors.Black)
                                                         .BackgroundColor(Colors.Transparent)
                                                         .BorderColor(Color.FromRgba("#cccccc"))
                                                         .BorderWidth(1)
-                                                        .CornerRadius(5)
-                                                        .HeightRequest(40)
-                                                        .FontSize(12)
                                                         .OnClicked(()=> SetState(s=> s.isBottomSheet = !s.isBottomSheet)),
 
                                                         new Label("로그인하지 않고 돌아보기")
@@ -79,6 +71,14 @@ namespace HogangNoNo_Toy_mauiReactor.Pages
                                 }
                         }
                         .Set(MauiControls.NavigationPage.HasNavigationBarProperty, false);
+                }
+                Button LoginButton(string text)
+                {
+                        return new Button(text)
+                        .FontSize(12)
+                        .FontAttributes(Microsoft.Maui.Controls.FontAttributes.Bold)
+                        .CornerRadius(5)
+                        .HeightRequest(40);
                 }
         }
 }

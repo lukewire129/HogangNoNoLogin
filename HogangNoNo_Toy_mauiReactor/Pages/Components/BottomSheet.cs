@@ -1,12 +1,10 @@
-﻿using MauiReactor;
-using MauiReactor.Shapes;
+﻿using MauiReactor.Shapes;
 using System;
 
 namespace HogangNoNo_Toy_mauiReactor.Pages.Components
 {
         class BottomSheetState
         {
-                public bool state { get; set; }
                 public double TranslateY { get; set; }
                 public double opacity { get; set; }
         }
@@ -28,15 +26,19 @@ namespace HogangNoNo_Toy_mauiReactor.Pages.Components
 
                 protected override void OnMounted()
                 {
-                        State.TranslateY = _state ? 0 : 250;
-                        State.opacity = _state ? 0.7 : 0;
+                        AnimationInitilize();
                         base.OnMounted();
                 }
                 protected override void OnPropsChanged()
                 {
+                        AnimationInitilize();
+                        base.OnPropsChanged();
+                }
+
+                private void AnimationInitilize()
+                {
                         State.TranslateY = _state ? 0 : 250;
                         State.opacity = _state ? 0.7 : 0;
-                        base.OnPropsChanged();
                 }
 
                 public override VisualNode Render()
@@ -65,33 +67,21 @@ namespace HogangNoNo_Toy_mauiReactor.Pages.Components
 
                                                 new VStack(5)
                                                 {
-                                                        new Button("휴대전화/이메일로 시작하기")
-                                                        .FontAttributes(Microsoft.Maui.Controls.FontAttributes.Bold)
+                                                        StartButton("휴대전화/이메일로 시작하기")
                                                         .TextColor(Colors.White)
                                                         .BackgroundColor(Color.FromRgba("#584DE3"))
-                                                        .CornerRadius(5)
-                                                        .HeightRequest(50)
-                                                        .FontSize(12)
                                                         .OnClicked(PersonalSignUp),
 
-                                                        new Button("페이스북으로 시작하기")
-                                                        .FontAttributes(Microsoft.Maui.Controls.FontAttributes.Bold)
-                                                        .BackgroundColor(Color.FromRgba("#1878F2"))
+                                                       StartButton("페이스북으로 시작하기")
                                                         .TextColor(Colors.White)
-                                                        .BorderColor(Color.FromRgba("#cccccc"))
-                                                        .CornerRadius(5)
-                                                        .HeightRequest(50)
-                                                        .FontSize(12),
+                                                        .BackgroundColor(Color.FromRgba("#1878F2"))
+                                                        .BorderColor(Color.FromRgba("#cccccc")),
 
-                                                        new Button("Apple로 시작하기")
-                                                        .FontAttributes(Microsoft.Maui.Controls.FontAttributes.Bold)
-                                                        .BackgroundColor(Colors.Transparent)
+                                                        StartButton("Apple로 시작하기")
                                                         .TextColor(Colors.Black)
+                                                        .BackgroundColor(Colors.Transparent)
                                                         .BorderColor(Colors.Black)
-                                                        .BorderWidth(1)
-                                                        .CornerRadius(5)
-                                                        .HeightRequest(50)
-                                                        .FontSize(12),
+                                                        .BorderWidth(1),
                                                 }
                                                 .Margin(15,0)
                                         }
@@ -106,6 +96,15 @@ namespace HogangNoNo_Toy_mauiReactor.Pages.Components
                                 .TranslationY(State.TranslateY)
                                 .WithAnimation(easing: Easing.CubicIn, duration: 300)
                         };
+                }
+
+                private Button StartButton(string text)
+                {
+                        return new Button(text)
+                                .FontAttributes(Microsoft.Maui.Controls.FontAttributes.Bold)
+                                .CornerRadius(5)
+                                .HeightRequest(50)
+                                .FontSize(12);
                 }
 
                 private void Back()

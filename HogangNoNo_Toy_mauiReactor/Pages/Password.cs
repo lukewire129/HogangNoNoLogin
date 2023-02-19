@@ -1,6 +1,4 @@
-﻿using MauiReactor;
-
-namespace HogangNoNo_Toy_mauiReactor.Pages
+﻿namespace HogangNoNo_Toy_mauiReactor.Pages
 {
         public class Password : Component
         {
