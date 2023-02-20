@@ -1,4 +1,5 @@
 ﻿using HogangNoNo_Toy_mauiReactor.Pages.Components;
+using MauiReactor.Compatibility;
 using System;
 using System.Linq;
 
@@ -9,6 +10,9 @@ public class PhoneAndEmailSignUpState
         public string id { get; set; }
         public string password { get; set; }
         public bool isNextButton { get; set; }
+
+        public bool IsIdFocusedEntry { get; set; }
+        public bool IsPWFocusedEntry { get; set; }
 }
 
 public class PhoneAndEmailSignUp : Component<PhoneAndEmailSignUpState>
@@ -26,38 +30,35 @@ public class PhoneAndEmailSignUp : Component<PhoneAndEmailSignUpState>
                         {
                                 new VStack(5)
                                 {
-                                        new Entry()
-                                        .CursorPosition(State.id == null? 0 : State.id.Count())
-                                        .Placeholder("휴대전화번호 또는 이메일")
-                                        .OnTextChanged((_)=>
-                                        {
-                                                State.id = _;
-                                                SetState(s=>s.isNextButton =IsActiveNextButton());
-                                        })
-                                        .Text(State.id),
+                                       new CustomEntry("휴대전화번호 또는 이메일", State.id)
+                                               .OnTextChanged((v)=>
+                                               {
+                                                       SetState(s=>s.id = v);
+                                                       SetState(s=>s.isNextButton = IsActiveNextButton());
+                                               })
+                                               .OnFocused((v)=> SetState(s=>s.IsIdFocusedEntry = v))
+                                               .IsFocused(State.IsIdFocusedEntry),
 
-                                        new Entry()
-                                        .Placeholder("비밀번호")
-                                        .IsPassword(true)
-                                        .CursorPosition(State.password == null? 0 : State.password.Count())
-                                        .OnTextChanged((_)=>
-                                        {
-                                                State.password = _;
-                                                SetState(s=>s.isNextButton =IsActiveNextButton());
-                                        })
-                                        .Text(State.password),
+                                       new CustomEntry("비밀번호", State.password)
+                                               .OnTextChanged((v)=>
+                                               {
+                                                       SetState(s=>s.password = v);
+                                                       SetState(s=>s.isNextButton = IsActiveNextButton());
+                                               })
+                                               .OnFocused((v)=> SetState(s=>s.IsPWFocusedEntry = v))
+                                               .IsFocused(State.IsPWFocusedEntry),
 
                                         new Grid()
                                         {
                                                 new Label("회원 가입")
-                                                .OnTapped(SignIn)
-                                                .HStart()
-                                                ,
+                                                        .OnTapped(SignIn)
+                                                        .HStart()
+                                                        ,
 
                                                 new Label("비밀 번호 찾기")
-                                                .OnTapped(Password)
-                                                .HEnd()
-                                                ,
+                                                        .OnTapped(Password)
+                                                        .HEnd()
+                                                        ,
                                         }
                                 }.Padding(10),
 
@@ -92,7 +93,7 @@ public class PhoneAndEmailSignUp : Component<PhoneAndEmailSignUpState>
                 if (State.password == null)
                         return false;
 
-                if(State.id.Contains("@") == true)
+                if (State.id.Contains("@") == true)
                         return true;
 
                 return IsPhoneNumber(State.id);
