@@ -16,7 +16,7 @@ namespace HogangNoNo_Toy_mauiReactor.Pages.Components
                 private string _txt;
                 private Action<String> _OnTextChanged;
                 private Action<bool> _OnFocused;
-
+                
                 private bool _focused;
                 private bool _isVisible = true;
                 public CustomEntry(string PlaceHolder, 
@@ -67,23 +67,23 @@ namespace HogangNoNo_Toy_mauiReactor.Pages.Components
                                 return new Grid();
 
                         return new Frame()
-                        {
-                                new BorderlessEntry()
-                                        .Placeholder(_placaHolder)
-                                        .Text(_txt)
-                                        .CursorPosition(_txt == null? 0 : _txt.Count())
-                                        .OnTextChanged(_OnTextChanged)
-                                        .OnFocused(()=>
-                                                {
-                                                        FocusedEvent(true);
-                                                })
-                                        .OnUnfocused(()=>
-                                                {
-                                                        FocusedEvent(false);    
-                                                })
-                        }
-                        .Padding(10, 2)
-                        .BorderColor(State.BorderColor);
+                                {
+                                        new BorderlessEntry()
+                                                .Placeholder(_placaHolder)
+                                                .Text(_txt)
+                                                .CursorPosition(_txt == null? 0 : _txt.Count())
+                                                .OnTextChanged(_OnTextChanged)
+                                                .OnFocused(()=>
+                                                        {
+                                                                FocusedEvent(true);
+                                                        })
+                                                .OnUnfocused(()=>
+                                                        {
+                                                                FocusedEvent(false);
+                                                        })
+                                }
+                                .Padding(10, 2)
+                                .BorderColor(State.BorderColor);
                 }
 
                 private void FocusedEvent(bool state)
