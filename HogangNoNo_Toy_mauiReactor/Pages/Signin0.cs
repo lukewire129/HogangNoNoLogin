@@ -68,10 +68,7 @@ public class Signin0 : Component<Signin0State>
                 .Title("일반 회원 가입");
         }
 
-        private void BottomButtonEnable()
-        {
-                SetState(s => s.isAuthNumber = IsActiveAuth());
-        }
+        private void BottomButtonEnable() => SetState(s => s.isAuthNumber = IsActiveAuth());
 
         private void Next()
         {
