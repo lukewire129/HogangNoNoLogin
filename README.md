@@ -1,9 +1,9 @@
-# 호갱노노 토이프로젝트 by ReactorMaui
+# 호갱노노 토이프로젝트 by MauiReactor
 
 
 > FEATURE
 
-1. Framework : ReactorMaui (Maui MVU)
+1. Framework : MauiReactor (Maui MVU)
 2. Control
 - Used By NavigationPage
 - Used By BorderlessEntry through CustomEntry
